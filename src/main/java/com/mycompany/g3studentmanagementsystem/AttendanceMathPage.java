@@ -5,19 +5,19 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-public class StudentManagerPage extends JFrame implements ActionListener{
+public class AttendanceMathPage extends JFrame implements ActionListener{
 
     private JLabel lblIcon, lblTitle;
+	private JLabel lblSubject;
     private JButton btnAttendance, btnStudents, btnGrades, btnSignOut;
-    private JButton btnSearch, btnAdd, btnEdit, btnDelete;
+    private JButton btnMath, btnScience, btnEnglish;
     private JTable tblStudent;
     private JScrollPane tableScroll;
-	private JTextField txtSearchId;
 
-    StudentManagerPage() {
+    AttendanceMathPage() {
 		
 		// Frame Settings
-        setTitle("FACULTY PORTAL - Student Manager");
+        setTitle("FACULTY PORTAL - Attendance (Math)");
         setSize(1024, 764);
         setLayout(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -43,15 +43,15 @@ public class StudentManagerPage extends JFrame implements ActionListener{
 		
         // Top Panel
         btnAttendance = new JButton("ATTENDANCE");
+		btnAttendance.setEnabled(false);
         btnAttendance.setBounds(300, 20, 120, 40);
-        btnAttendance.setBackground(new Color(52, 168, 235));
+        btnAttendance.setBackground(new Color(35, 132, 189));
         btnAttendance.setForeground(Color.WHITE);
         add(btnAttendance);
 
         btnStudents = new JButton("STUDENTS");
-		btnStudents.setEnabled(false);
         btnStudents.setBounds(430, 20, 120, 40);
-        btnStudents.setBackground(new Color(35, 132, 189));
+        btnStudents.setBackground(new Color(52, 168, 235));
         btnStudents.setForeground(Color.WHITE);
         add(btnStudents);
 
@@ -78,42 +78,40 @@ public class StudentManagerPage extends JFrame implements ActionListener{
 		
 		
 		//Side Panel
+		
+		lblSubject = new JLabel("SUBJECTS");
+        lblSubject.setFont(new Font("Arial", Font.BOLD, 18));
+        lblSubject.setBounds(40, 90, 200, 40);
+        add(lblSubject);
 
-        // Search Field 
-        txtSearchId = new JTextField(" Search ID...");
-        txtSearchId.setBounds(20, 100, 160, 35); 
-        add(txtSearchId);
 
         // Search Button 
-        btnSearch = new JButton("SEARCH STUDENT");
-        btnSearch.setBounds(20, 140, 160, 40);
-        btnSearch.setBackground(new Color(52, 168, 235));
-        btnSearch.setForeground(Color.WHITE);
-        add(btnSearch);
+        btnMath = new JButton("MATH");
+		btnMath.setEnabled(false);
+        btnMath.setBounds(20, 150, 160, 40);
+        btnMath.setBackground(new Color(35, 132, 189));
+        btnMath.setForeground(Color.WHITE);
+        add(btnMath);
 
         // Add Button 
-        btnAdd = new JButton("ADD STUDENT");
-        btnAdd.setBounds(20, 200, 160, 40);
-        btnAdd.setBackground(new Color(52, 168, 235));
-        btnAdd.setForeground(Color.WHITE);
-        add(btnAdd);
+        btnScience = new JButton("SCIENCE");
+        btnScience.setBounds(20, 200, 160, 40);
+        btnScience.setBackground(new Color(52, 168, 235));
+        btnScience.setForeground(Color.WHITE);
+        add(btnScience);
 
         // Edit Button
-        btnEdit = new JButton("EDIT STUDENT");
-        btnEdit.setBounds(20, 250, 160, 40);
-        btnEdit.setBackground(new Color(52, 168, 235));
-        btnEdit.setForeground(Color.WHITE);
-        add(btnEdit);
+        btnEnglish = new JButton("ENGLISH");
+        btnEnglish.setBounds(20, 250, 160, 40);
+        btnEnglish.setBackground(new Color(52, 168, 235));
+        btnEnglish.setForeground(Color.WHITE);
+        add(btnEnglish);
 
         // Delete Button
-        btnDelete = new JButton("DELETE STUDENT");
-        btnDelete.setBounds(20, 300, 160, 40);
-        btnDelete.setBackground(new Color(52, 168, 235));
-        btnDelete.setForeground(Color.WHITE);
-        add(btnDelete);
+
 
         // Student Table 
-        String[] columns = {"STUDENT ID", "NAME", "SECTION", "GENDER", "BIRTH DATE", "EMAIL ADDRESS"};
+        String[] columns = {"STUDENT ID", "WEEK 1", "SWEEK 2", "WEEK 3", "WEEK 4", "WEEK 5"};
         Object[][] data = new Object[0][6];
 
         tblStudent = new JTable(new DefaultTableModel(data, columns));
@@ -123,35 +121,27 @@ public class StudentManagerPage extends JFrame implements ActionListener{
 
         
 		
-		btnAdd.addActionListener(this);
-		btnAttendance.addActionListener(this);
-		btnDelete.addActionListener(this);
-		btnEdit.addActionListener(this);
+		btnScience.addActionListener(this);
+		btnEnglish.addActionListener(this);		
+		btnStudents.addActionListener(this);
 		btnGrades.addActionListener(this);
-		btnSearch.addActionListener(this);
 		btnSignOut.addActionListener(this);
     }
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == btnAdd){
-			AddStudentPage asp = new AddStudentPage();
-			asp.setVisible(true);
-		} else if (e.getSource() == btnAttendance){
-			AttendanceMathPage amp = new AttendanceMathPage();
-			FrameSizeNavigation.navigate(this, amp);
-		} else if (e.getSource() == btnDelete){
-			DeleteStudentPage dsp = new DeleteStudentPage();
-			dsp.setVisible(true);
-		} else if (e.getSource() == btnEdit){
-			EditStudentPage esp = new EditStudentPage();
-			esp.setVisible(true);
+		if (e.getSource() == btnScience){
+			AttendanceSciencePage asp = new AttendanceSciencePage();
+			FrameSizeNavigation.navigate(this, asp);
+		} else if (e.getSource() == btnStudents){
+			StudentManagerPage smp = new StudentManagerPage();
+			FrameSizeNavigation.navigate(this, smp);
+		} else if (e.getSource() == btnEnglish){
+			AttendanceEnglishPage aep = new AttendanceEnglishPage();
+			FrameSizeNavigation.navigate(this, aep);
 		} else if (e.getSource() == btnGrades){
 			GradesManagerPage gsp = new GradesManagerPage();
-			FrameSizeNavigation.navigate(this, gsp);
-//		} else if (e.getSource() == btnSearch){
-//			GradesManagerPage gsp = new GradesManagerPage();
-//			FrameSizeNavigation.navigate(this, gsp);    still no function for search
+			FrameSizeNavigation.navigate(this, gsp); 
 		} else if (e.getSource() == btnSignOut){
 			LandingPageGUI lp = new LandingPageGUI();
 			FrameSizeNavigation.navigate(this, lp);

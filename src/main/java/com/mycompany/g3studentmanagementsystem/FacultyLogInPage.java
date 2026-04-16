@@ -95,12 +95,10 @@ public class FacultyLogInPage extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnBack){
 			LandingPageGUI lp = new LandingPageGUI();
-			lp.setVisible(true);
-			this.setVisible(false);
+			FrameSizeNavigation.navigate(this, lp);
 		} else if (e.getSource() == btnLogin){
 			StudentManagerPage smp = new StudentManagerPage();
-			smp.setVisible(true);
-			this.setVisible(false);
+			FrameSizeNavigation.navigate(this, smp);
 		}
 	}
 }

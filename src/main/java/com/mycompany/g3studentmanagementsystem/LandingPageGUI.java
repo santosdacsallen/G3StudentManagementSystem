@@ -77,12 +77,10 @@ public class LandingPageGUI extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnFaculty){
 			FacultyLogInPage flp = new FacultyLogInPage();
-			flp.setVisible(true);
-			this.setVisible(false);
+			FrameSizeNavigation.navigate(this, flp);
 		} else if (e.getSource() == btnStudent){
 			StudentLogInPage slp = new StudentLogInPage();
-			slp.setVisible(true);
-			this.setVisible(false);
+			FrameSizeNavigation.navigate(this, slp);
 		}
 	}
 

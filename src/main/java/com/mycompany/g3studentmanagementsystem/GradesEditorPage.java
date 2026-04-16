@@ -124,7 +124,6 @@ public class GradesEditorPage extends JFrame implements ActionListener{
         
 
 		btnCancel.addActionListener(this);
-		btnEdit.addActionListener(this);
 		btnSave.addActionListener(this);
 		btnSearch.addActionListener(this);
 		
@@ -137,13 +136,10 @@ public class GradesEditorPage extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnCancel){
 			GradesManagerPage gmp = new GradesManagerPage();
-			gmp.setVisible(true);
-		} else if (e.getSource() == btnEdit){
-//			EditStudentPage esp = new EditStudentPage();           on work
-//			esp.setVisible(true);
+			FrameSizeNavigation.navigate(this, gmp);
 		} else if (e.getSource() == btnSave){
 			GradesManagerPage gmp = new GradesManagerPage();
-			gmp.setVisible(true);
+			FrameSizeNavigation.navigate(this, gmp);
 		} 
 		else if (e.getSource() == btnSearch){
 //			GradesManagerPage gmp = new GradesManagerPage();       on work
