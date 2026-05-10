@@ -35,16 +35,6 @@ public class EditStudentData implements ActionListener{
        }
     }
     
-    //Cancel Button Function
-    private void cancelButton(){
-        
-        int confirmMessage = JOptionPane.showConfirmDialog(null, "Are you sure want to cancel?","Confirm", JOptionPane.YES_NO_OPTION);
-        
-        if (confirmMessage == JOptionPane.YES_NO_OPTION){
-            editstudents.dispose();
-        }
-    }
-    
     //Clear Input Function
     private void clearInput(){
         
@@ -54,8 +44,17 @@ public class EditStudentData implements ActionListener{
         editstudents.txtGender.setText("");
         editstudents.txtBirthDate.setText("");
         editstudents.txtEmail.setText("");
-        editstudents.txtGrades.setText("");
+        editstudents.txtGrades.setText("");    
+    }
+    
+    //Cancel Button Function
+    private void cancelButton(){
         
+        int confirmMessage = JOptionPane.showConfirmDialog(null, "Are you sure want to cancel?","Confirm", JOptionPane.YES_NO_OPTION);
+        
+        if (confirmMessage == JOptionPane.YES_NO_OPTION){
+            editstudents.dispose();
+        }
     }
     
      @Override

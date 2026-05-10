@@ -14,17 +14,6 @@ public class AddStudentData implements ActionListener{
         this. addstudents = addstudents;
         
     }
-    
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == addstudents.btnAdd){
-	   addButton();
-    } 
-        else if (e.getSource() == addstudents.btnCancel){
-           cancelButton(); 
-    }
-    
-}
 
     //Add Button Function
     private void addButton(){
@@ -49,6 +38,18 @@ public class AddStudentData implements ActionListener{
        }
     }
     
+      //Clear Input Function
+    private void clearInput(){
+        
+        addstudents.txtStudentId.setText("");
+        addstudents.txtName.setText("");
+        addstudents.txtSection.setText("");
+        addstudents.txtGender.setText("");
+        addstudents.txtBirthDate.setText("");
+        addstudents.txtEmail.setText("");
+        addstudents.txtGrades.setText("");
+    }
+    
     //Cancel Button Function
     private void cancelButton(){
         
@@ -59,18 +60,17 @@ public class AddStudentData implements ActionListener{
         }
     }
     
-    //Clear Input Function
-    private void clearInput(){
-        
-        addstudents.txtStudentId.setText("");
-        addstudents.txtName.setText("");
-        addstudents.txtSection.setText("");
-        addstudents.txtGender.setText("");
-        addstudents.txtBirthDate.setText("");
-        addstudents.txtEmail.setText("");
-        addstudents.txtGrades.setText("");
-        
+    
+     @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == addstudents.btnAdd){
+	   addButton();
+    } 
+        else if (e.getSource() == addstudents.btnCancel){
+           cancelButton(); 
     }
+    
+}
     
 
     }
