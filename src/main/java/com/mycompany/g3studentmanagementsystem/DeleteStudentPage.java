@@ -122,6 +122,18 @@ public class DeleteStudentPage extends JFrame implements ActionListener {
                 return;
             }
 
+
+            if (studentId.isEmpty()) {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Student ID is required!",
+                        "Missing Information",
+                        JOptionPane.ERROR_MESSAGE
+                );
+                return;
+            }
+
+
             int confirm = JOptionPane.showConfirmDialog(
                     this,
                     "Are you sure you want to delete this student?",
