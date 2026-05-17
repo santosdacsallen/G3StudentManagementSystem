@@ -8,11 +8,12 @@ import javax.swing.*;
 public class AddStudentPage extends JFrame implements ActionListener{
 
     public JLabel lblTitle, lblStudentId, lblName, lblSection, lblGender, lblBirthDate, lblEmail, lblGrades;
-    public JTextField txtStudentId, txtName, txtSection, txtGender, txtBirthDate, txtEmail, txtGrades;
+    public JTextField txtName, txtSection, txtGender, txtBirthDate, txtEmail, txtGrades,txtStudentId;
     public JButton btnAdd;
     public JButton btnCancel;
 
     AddStudentPage() {
+        
         // Frame settings
         setTitle("Add Student");
         setSize(674, 924);

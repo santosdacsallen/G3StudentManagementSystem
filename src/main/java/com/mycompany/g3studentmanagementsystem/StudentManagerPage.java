@@ -12,7 +12,7 @@ public class StudentManagerPage extends JFrame implements ActionListener{
     private JButton btnSearch, btnAdd, btnEdit, btnDelete;
     private JTable tblStudent;
     private JScrollPane tableScroll;
-	private JTextField txtSearchId;
+    private JTextField txtSearchId;
 
     StudentManagerPage() {
 		
@@ -49,7 +49,7 @@ public class StudentManagerPage extends JFrame implements ActionListener{
         add(btnAttendance);
 
         btnStudents = new JButton("STUDENTS");
-		btnStudents.setEnabled(false);
+        btnStudents.setEnabled(false);
         btnStudents.setBounds(430, 20, 120, 40);
         btnStudents.setBackground(new Color(35, 132, 189));
         btnStudents.setForeground(Color.WHITE);
@@ -57,7 +57,7 @@ public class StudentManagerPage extends JFrame implements ActionListener{
 
         btnGrades = new JButton("GRADES");
         btnGrades.setBounds(560, 20, 120, 40);
-        btnGrades.setBackground(new Color(52, 168, 235));
+        btnGrades.setBackground(new Color(210, 230, 255));
         btnGrades.setForeground(Color.WHITE);
         add(btnGrades);
 
@@ -70,13 +70,7 @@ public class StudentManagerPage extends JFrame implements ActionListener{
         btnSignOut.setForeground(Color.WHITE);
         add(btnSignOut);
 
-		
-		
-		
-		
-		
-		
-		
+	
 		//Side Panel
 
         // Search Field 
