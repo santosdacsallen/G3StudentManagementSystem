@@ -12,7 +12,7 @@ import javax.swing.*;
 
 public class LandingPageGUI extends JFrame implements ActionListener{
 	
-	private JLabel lblIcon, lblTitle, lblSubtitle;
+    private JLabel lblIcon, lblTitle, lblSubtitle;
     private JButton btnStudent, btnFaculty;
 
 	 LandingPageGUI() {
@@ -25,9 +25,8 @@ public class LandingPageGUI extends JFrame implements ActionListener{
         setLocationRelativeTo(null);
         setLayout(null);
 		getContentPane().setBackground(new Color(235, 242, 250));
-
-
-
+        
+        
         // Logo/Icon
         lblIcon = new JLabel("🎓", SwingConstants.CENTER);
         lblIcon.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 48));
@@ -68,9 +67,8 @@ public class LandingPageGUI extends JFrame implements ActionListener{
         btnFaculty.setBorderPainted(false);
         add(btnFaculty);
 
-        
-		btnFaculty.addActionListener(this);
-		btnStudent.addActionListener(this);
+        btnFaculty.addActionListener(this);
+        btnStudent.addActionListener(this);
     }
 
 	@Override

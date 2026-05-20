@@ -153,10 +153,19 @@ public class EditStudentPage extends JFrame implements ActionListener {
             this.setVisible(false);
 
         } else if (e.getSource() == btnCancel) {
-
-            StudentManagerPage smp = new StudentManagerPage();
-            smp.setVisible(true);
-            this.setVisible(false);
-        }
+    
+    int confirmMessage = JOptionPane.showConfirmDialog(this,
+        "Are you sure you want to cancel?",
+        "Confirm", 
+        JOptionPane.YES_NO_OPTION
+    );
+        
+    if (confirmMessage == JOptionPane.YES_OPTION) {
+        
+        StudentManagerPage smp = new StudentManagerPage();
+        smp.setVisible(true);      
+        this.setVisible(false);
     }
+	}
+}
 }

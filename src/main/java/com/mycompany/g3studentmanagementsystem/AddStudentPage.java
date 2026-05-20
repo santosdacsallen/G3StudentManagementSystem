@@ -86,8 +86,8 @@ public class AddStudentPage extends JFrame implements ActionListener {
         txtEmail = new JTextField();
         txtEmail.setBounds(250, 450, 200, 30);
         add(txtEmail);
-		
-		// PASSWORD
+
+        // PASSWORD
         lblPassword = new JLabel("PASSWORD:");
         lblPassword.setBounds(100, 520, 140, 25);
         add(lblPassword);
@@ -122,16 +122,16 @@ public class AddStudentPage extends JFrame implements ActionListener {
     }
 
     @Override
-public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e) {
 
-    if (e.getSource() == btnAdd) {
+        if (e.getSource() == btnAdd) {
 
     String studentId = txtStudentId.getText().trim();
-    String name = txtName.getText().trim();
-    String section = txtSection.getText().trim();
-    String email = txtEmail.getText().trim();
-    String password = txtPassword.getText().trim();
-    String sex = (String) cboSex.getSelectedItem();
+            String name = txtName.getText().trim();
+            String section = txtSection.getText().trim();
+            String email = txtEmail.getText().trim();
+            String password = txtPassword.getText().trim();
+            String sex = (String) cboSex.getSelectedItem();
 
     if (studentId.isEmpty() || 
 			name.isEmpty() || 
@@ -140,36 +140,36 @@ public void actionPerformed(ActionEvent e) {
 			password.isEmpty()|| 
 			dateChooserBirth.getDate() == null) {
 
-        JOptionPane.showMessageDialog(this, "Please fill all fields!");
-        return;
-    }
-	if (!email.contains("@")) {
+                JOptionPane.showMessageDialog(this, "Please fill all fields!");
+                return;
+            }
+            if (!email.contains("@")) {
             JOptionPane.showMessageDialog(
                 this,
                 "Invalid email address! Must contain '@'",
                 "Email Error",
                 JOptionPane.ERROR_MESSAGE);
-        return;
-    }
+                return;
+            }
 
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		String birthDate = sdf.format(dateChooserBirth.getDate());
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            String birthDate = sdf.format(dateChooserBirth.getDate());
 
 		Student s = new Student(studentId, name, section, sex, birthDate, email, password);
-		StudentDataManager.addStudent(s);
+            StudentDataManager.addStudent(s);
 
-		JOptionPane.showMessageDialog(this, "Student Added Successfully!");
-
-        StudentManagerPage smp = new StudentManagerPage();
-        smp.setVisible(true);
-        this.setVisible(false);
-
-    } else if (e.getSource() == btnCancel) {
+            JOptionPane.showMessageDialog(this, "Student Added Successfully!");
 
         StudentManagerPage smp = new StudentManagerPage();
         smp.setVisible(true);
-        this.setVisible(false);
+            this.setVisible(false);
+
+        } else if (e.getSource() == btnCancel) {
+
+        StudentManagerPage smp = new StudentManagerPage();
+        smp.setVisible(true);
+            this.setVisible(false);
+        }
     }
-}
 }
