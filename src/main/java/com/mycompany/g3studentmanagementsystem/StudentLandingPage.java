@@ -7,10 +7,11 @@ import javax.swing.table.*;
 
 public class StudentLandingPage extends JFrame implements ActionListener {
 
-    private JLabel lblIcon, lblTitle;
-    private JButton btnSignOut;
-    private JTable tblGrades;
-    private JScrollPane tableScroll;
+    private JLabel lblWelcome, lblIcon, lblTitle, lblId, lblName, lblCourse, lblContactNumber, lblYearLevel, lblInfo;
+    private JTextField txtId, txtName, txtContactNumber;
+    private JButton btnSignOut, btnProfile, btnGrades, btnSubjects, btnReportCard, btnEnrollment, btnEnroll, btnDashBoard;
+    private JPanel DashBoardPanel, ProfilePanel, GradesPanel, SubjectsPanel, ReportCardPanel, Enrollment, SemesterDash, GwaDash, Standing;
+    private JComboBox<String> cmbCourse, cmbYearLevel;
 
     public StudentLandingPage() {
 
@@ -39,35 +40,246 @@ public class StudentLandingPage extends JFrame implements ActionListener {
         btnSignOut.setBounds(850, 20, 120, 40);
         btnSignOut.setBackground(new Color(224, 69, 52));
         btnSignOut.setForeground(Color.WHITE);
+        btnSignOut.addActionListener(this);
         add(btnSignOut);
 
-        // Table Columns
-        String[] columns = {
-            "SUBJECT",
-            "UNITS",
-            "FINAL GRADE",
-            "GRADE STATUS"
-        };
+        //SideBar Panel 
+          
+        //Left sidebar button Profile
+        btnProfile = new JButton("PROFILE");
+        btnProfile.setBounds(20, 150, 180, 40);
+        btnProfile.setBackground(new Color(52, 168, 235));
+        btnProfile.setForeground(Color.WHITE);
+        btnProfile.addActionListener(this);
+        add(btnProfile);
+        
+        //Right sidebar Profile
+        ProfilePanel = new JPanel(new BorderLayout());
+        ProfilePanel.setBounds(250, 100, 700, 500);
+        String[] profileColumns = {"STUDENT INFO", "DETAILS"};
+        Object[][] profileData = {
+        {"Name", "Woo Seok Byeon"},
+        {"Student ID", "2025-001"},
+        {"Course", "BSIT"},
+        {"Year Level", "2nd Year"}};
+        
+        JTable profileTable = new JTable(new DefaultTableModel(profileData, profileColumns));
+        ProfilePanel.add(new JScrollPane(profileTable), BorderLayout.CENTER);
+        add(ProfilePanel);
+        ProfilePanel.setVisible(false);
+        
+        //Left sidebar button Grades
+        btnGrades = new JButton("GRADES");
+        btnGrades.setBounds(20, 200, 180, 40);
+        btnGrades.setBackground(new Color(52, 168, 235));
+        btnGrades.setForeground(Color.WHITE);
+        btnGrades.addActionListener(this);
+        add(btnGrades);
+        
+        //Right sidebar Grades
+        GradesPanel = new JPanel(new BorderLayout());
+        GradesPanel.setBounds(250, 100, 700, 500);
+        String[] gradeColumns = {"SUBJECT", "UNITS", "FINAL GRADE", "STATUS"};
+        Object[][] gradeData = {
+        {"English", "3", "1.50", "PASSED"},
+        {"Math", "3", "1.75", "PASSED"},
+        {"Science", "3", "2.00", "PASSED"}};
+        
+        JTable gradesTable = new JTable(new DefaultTableModel(gradeData, gradeColumns));
+        GradesPanel.add(new JScrollPane(gradesTable), BorderLayout.CENTER);
+        add(GradesPanel);
+        GradesPanel.setVisible(false);
+       
+        //Left sidebar button Subjects
+        btnSubjects = new JButton("SUBJECT");
+        btnSubjects.setBounds(20, 250, 180, 40);
+        btnSubjects.setBackground(new Color(52, 168, 235));
+        btnSubjects.setForeground(Color.WHITE);
+        btnSubjects.addActionListener(this);
+        add(btnSubjects);
+        
+        // Right sidebar Panel Subjects
+        SubjectsPanel = new JPanel(new BorderLayout());
+        SubjectsPanel.setBounds(250, 100, 700, 500);
+        String[] subjColumns = {"SUBJECT", "INSTRUCTOR", "SCHEDULE"};
+        Object[][] subjData = {
+        {"English", "Mr. Santos", "Mon 8AM"},
+        {"Math", "Ms. Olviga", "Tue 10AM"},
+        {"Science", "Mr. Nase", "Wed 1PM"}};
 
-        // Sample empty data
-        Object[][] data = new Object[0][4];
+        JTable subjectsTable = new JTable(new DefaultTableModel(subjData, subjColumns));
+        SubjectsPanel.add(new JScrollPane(subjectsTable), BorderLayout.CENTER);
+        add(SubjectsPanel);
+        SubjectsPanel.setVisible(false);
+        
+        //Left sidebar button ReportCard
+        btnReportCard = new JButton("REPORT CARD");
+        btnReportCard.setBounds(20, 300, 180, 40);
+        btnReportCard.setBackground(new Color(52, 168, 235));
+        btnReportCard.setForeground(Color.WHITE);
+        btnReportCard.addActionListener(this);
+        add(btnReportCard);
+        
+        //Right sidebar Panel ReportCard
+        ReportCardPanel = new JPanel(new BorderLayout());
+        ReportCardPanel.setBounds(250, 100, 700, 500);
+        String[] reportColumns = {"SEMESTER", "AVERAGE", "STATUS", "HONORS"};
+        Object[][] reportData = {
+        {"1st Semester", "1.75", "PASSED", "Dean's List"},
+        {"2nd Semester", "1.80", "PASSED", "None"}};
+        
+        JTable reportTable = new JTable(new DefaultTableModel(reportData, reportColumns));
+        ReportCardPanel.add(new JScrollPane(reportTable), BorderLayout.CENTER);
+        add(ReportCardPanel);
+        ReportCardPanel.setVisible(false);
+        
+        //Left sidebar Button Enrollment
+        btnEnrollment = new JButton("ENROLLMENT");
+        btnEnrollment.setBounds(20, 350, 180, 40);
+        btnEnrollment.setBackground(new Color(52, 168, 235));
+        btnEnrollment.setForeground(Color.WHITE);
+        btnEnrollment.addActionListener(this);
+        add(btnEnrollment);
+        
+        //Right sidebar Panel Enrollment
+        Enrollment = new JPanel();
+        Enrollment.setLayout(null);
+        Enrollment.setBounds(250, 100, 700, 500);
 
-        // Table
-        tblGrades = new JTable(new DefaultTableModel(data, columns));
-        tableScroll = new JScrollPane(tblGrades);
-        tableScroll.setBounds(50, 100, 900, 550);
-        add(tableScroll);
+       lblId = new JLabel("Student ID:");
+       lblId.setBounds(20, 20, 100, 25); 
+       Enrollment.add(lblId);
 
-        btnSignOut.addActionListener(this);
+       txtId = new JTextField();
+       txtId.setBounds(150, 20, 400, 25);
+       Enrollment.add(txtId);
+       
+       lblName = new JLabel("Student Name:");
+       lblName.setBounds(20, 60, 100, 25);
+       Enrollment.add(lblName);
+       
+       txtName = new JTextField();
+       txtName.setBounds(150, 60, 400, 25);
+       Enrollment.add(txtName);
+       
+       lblCourse = new JLabel("Course:");
+       lblCourse.setBounds(20, 100, 200, 25);
+       Enrollment.add(lblCourse);
+       
+       cmbCourse = new JComboBox<>(new String[]{"BSCS", "BSIT", "BSE"});
+       cmbCourse.setBounds(150, 100, 200, 25);
+       Enrollment.add(cmbCourse);
+       
+       lblYearLevel = new JLabel("Year Level:");
+       lblYearLevel.setBounds(20, 140, 100, 25);
+       Enrollment.add(lblYearLevel);
+       
+       cmbYearLevel = new JComboBox<>(new String[]{"1st Year", "2nd Year", "3rd Year", "4th Year"});
+       cmbYearLevel.setBounds(150, 140, 200, 25);
+       Enrollment.add(cmbYearLevel);
+       
+       lblContactNumber = new JLabel("Contact Number:");
+       lblContactNumber.setBounds(20, 200, 100, 25);
+       Enrollment.add(lblContactNumber);
+       
+       txtContactNumber = new JTextField();
+       txtContactNumber.setBounds(150, 200, 400, 25);
+       Enrollment.add(txtContactNumber);
+      
+       btnEnroll = new JButton("Enroll");
+       btnEnroll.setBounds(250, 350, 200, 40);
+       btnEnroll.setBackground(new Color(52, 168, 235));
+       btnEnroll.setForeground(Color.WHITE);
+       Enrollment.add(btnEnroll);
+       add(Enrollment);
+       Enrollment.setVisible(false);
+       
+       //Left sidebar Button DashBoard
+       btnDashBoard = new JButton("DASHBOARD");
+       btnDashBoard.setBounds(20, 100, 180, 40);
+       btnDashBoard.setBackground(new Color(52, 168, 235));
+       btnDashBoard.setForeground(Color.WHITE);
+       btnDashBoard.addActionListener(this);
+       add(btnDashBoard);
+       
+       //Right sidebar Panel Dashboard
+       DashBoardPanel = new JPanel();
+       DashBoardPanel.setLayout(null);
+       DashBoardPanel.setBounds(250, 100, 700, 500);
+        
+       lblWelcome = new JLabel("Welcome to the Student Portal!",SwingConstants.CENTER);
+       lblWelcome.setFont(new Font("Arial", Font.BOLD, 24));
+       lblWelcome.setBounds(150, 50, 400, 40);
+       DashBoardPanel.add(lblWelcome);
+       
+       lblInfo = new JLabel("Quick access to your academic essentials — just a click away.", SwingConstants.CENTER);
+       lblInfo.setFont(new Font("Arial", Font.PLAIN, 14));
+       lblInfo.setBounds(50, 80, 600, 30);
+       DashBoardPanel.add(lblInfo);
+       
+       SemesterDash = new JPanel();
+       SemesterDash.setBackground(new Color(210, 230, 255));
+       SemesterDash.setBounds(50, 150, 180, 80);
+       SemesterDash.setLayout(new BorderLayout());
+       SemesterDash.add(new JLabel("Current Semester", SwingConstants.CENTER), BorderLayout.NORTH);
+       SemesterDash.add(new JLabel("2nd Semester", SwingConstants.CENTER), BorderLayout.CENTER);
+       DashBoardPanel.add(SemesterDash);
+       
+       GwaDash = new JPanel();
+       GwaDash.setBackground(new Color(210, 255, 210));
+       GwaDash.setBounds(260, 150, 180, 80);
+       GwaDash.setLayout(new BorderLayout());
+       GwaDash.add(new JLabel("GWA", SwingConstants.CENTER), BorderLayout.NORTH);
+       GwaDash.add(new JLabel("1.75", SwingConstants.CENTER), BorderLayout.CENTER);
+       DashBoardPanel.add(GwaDash);
+       
+       Standing = new JPanel();
+       Standing.setBackground(new Color(255, 230, 210));
+       Standing.setBounds(470, 150, 180, 80);
+       Standing.setLayout(new BorderLayout());
+       Standing.add(new JLabel("Standing", SwingConstants.CENTER), BorderLayout.NORTH);
+       Standing.add(new JLabel("Good Standing", SwingConstants.CENTER), BorderLayout.CENTER);
+       DashBoardPanel.add(Standing);
+       
+       add(DashBoardPanel);
+       DashBoardPanel.setVisible(true);
+        
     }
+    
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
-        if (e.getSource() == btnSignOut) {
+        
+        //To Hide all panels First
+        DashBoardPanel.setVisible(false);
+        ProfilePanel.setVisible(false);
+        GradesPanel.setVisible(false);
+        SubjectsPanel.setVisible(false);
+        ReportCardPanel.setVisible(false);
+        Enrollment.setVisible(false);
+        
+         if (e.getSource() == btnSignOut) {
             LandingPageGUI lp = new LandingPageGUI();
             lp.setVisible(true);
             this.setVisible(false); 
         }
-    }
+        else if (e.getSource() == btnDashBoard){
+        DashBoardPanel.setVisible(true);
+        } 
+        else if (e.getSource() == btnProfile) {
+        ProfilePanel.setVisible(true);   
+        }   
+        else if (e.getSource() == btnGrades) {
+        GradesPanel.setVisible(true);
+        } 
+        else if (e.getSource() == btnSubjects) {
+        SubjectsPanel.setVisible(true);
+        }
+        else if (e.getSource() == btnReportCard) {
+        ReportCardPanel.setVisible(true);
+        } 
+        else if (e.getSource() == btnEnrollment) {
+        Enrollment.setVisible(true);
+        }
+}
 }

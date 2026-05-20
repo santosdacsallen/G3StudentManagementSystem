@@ -168,9 +168,9 @@ public class StudentManagerPage extends JFrame implements ActionListener {
             if (s != null) {
                 JOptionPane.showMessageDialog(this,
                         "FOUND STUDENT:\n\n" +
-                        "Name: " + s.name + "\n" +
-                        "Section: " + s.section + "\n" +
-                        "Email: " + s.email
+                                "Name: " + s.name + "\n" +
+                                "Section: " + s.section + "\n" +
+                                "Email: " + s.email
                 );
             } else {
                 JOptionPane.showMessageDialog(this, "Student not found!");
